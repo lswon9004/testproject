@@ -57,7 +57,7 @@
             </button>
           </div>
         </div>
-        <button class="btn1">
+        <button class="btn1" id="sad">
           <!-- TODO --> 
           관리자로그인
         </button>
@@ -70,6 +70,14 @@
 function move(){	
 	no = $('#no').val()
 	pw = $('#pw').val()
+	if (!no){
+		alert('사번 입력바람');
+		return false;
+	}
+	if (!pw){
+		alert('pw 입력하세요');
+		return false;
+	}
 	$.getJSON('/login',{'no':no,'pw':pw},function(data){
 		if(data ==='/'){
 			alert('failed')
