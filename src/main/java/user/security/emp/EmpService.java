@@ -15,4 +15,10 @@ public class EmpService {
 	public int getRight(String position) {
 		return dao.getRight(position);
 	}
+	public int loginCount(int count) {
+		return dao.loginCount(count);
+	}
+	public int getCount(int empno) {
+		return dao.getLoginCount(empno);
+	}
 }

@@ -22,7 +22,7 @@ public class EmpDto {
 	String imgPath;
 	Date birthday;
 	String memo;
-	
+	int loginCount;
 	
 	
 }
