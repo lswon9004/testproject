@@ -264,9 +264,7 @@
                 <div class="notes">
                     <textarea class="note">12:20 부장님과 점심 14:50 미팅</textarea>
                     </div>
-                    <textarea class="note green">
-                        Add notes
-                    </textarea>
+                    <textarea class="note green">Add notes</textarea>
                 </div>
             </div>
         </div>
