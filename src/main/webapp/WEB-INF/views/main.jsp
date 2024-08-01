@@ -30,7 +30,7 @@
                     <a href="#">Home</a>
                     <a href="#">연봉계산기</a>
                     <a href="#">개인정보수정</a>
-                    <a href="#">로그아웃</a>
+                    <a href="/logout">로그아웃</a>
                 </nav>
             </div>
         </header>
