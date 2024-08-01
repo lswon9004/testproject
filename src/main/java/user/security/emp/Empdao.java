@@ -6,12 +6,12 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface Empdao {
-	@Select("select * from `사원 정보` where empno = #{empno}")
+	@Select("select * from emp where empno = #{empno}")
 	EmpDto login(int empno);
-	@Select("select `권한` from `직급` where `직급` = #{position}")
+	@Select("select authority from position where position = #{position}")
 	int getRight(String position);
-	@Update("update `사원 정보` set loginCount  = #{loginCount}")
+	@Update("update emp set loginCount  = #{loginCount}")
 	int loginCount(int loginCount);
-	@Select("select loginCount from `사원 정보` where empno = #{empno}")
+	@Select("select loginCount from emp where empno = #{empno}")
 	int getLoginCount(int empno);
 }

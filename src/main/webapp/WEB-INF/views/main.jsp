@@ -19,7 +19,7 @@
                     <div>Java Park님 환영합니다.</div>
                 </div>
             </div>
-            <a href="#" class="logout">로그아웃</a>
+            <a href="/logout" class="logout">로그아웃</a>
         </div>
         <div class="content">
             <div class="sidebar">
@@ -27,7 +27,7 @@
                     <li><a href="#">통합업무</a></li>
                     <li><a href="#">게시판</a></li>
                     <li><a href="#">익명게시판</a></li>
-                    <li><a href="#">전자결재</a></li>
+                    <li><a href="/approval">전자결재</a> </li>
                     <li><a href="#">직원관리</a></li>
                     <li><a href="#">팀장전자결재</a></li>
                     <li><a href="#">캘린더</a></li>
