@@ -88,17 +88,16 @@ public class EmpController {
 
 	@GetMapping("/findpw")
 	public void findpw() {
-
+  
 	}
 	
 	@PostMapping("/findpw")
 	public String postMethodName() {
 		service.loginCount(0);		
-		return "/loginform";
+		return "redirect:/loginform";
 	}
 	@GetMapping("/loginform")
 	public void getMethodName() {
 	}
-	
 	
 }

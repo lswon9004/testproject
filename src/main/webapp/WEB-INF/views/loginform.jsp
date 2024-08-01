@@ -26,10 +26,7 @@
 
     <div class="untitled-page22 root">
       <div class="flex_row">
-        <div class="flex_row1">
-          <div class="text1">Privacy Policy</div>
-          <div class="text1">TomCat©2023</div>
-        </div>
+        
         <div class="content_box4">
           <div class="flex_col">
             <div class="flex_col1">
@@ -40,7 +37,7 @@
             <div class="content_box2">
               <div class="flex_col2">
                 <p class="highlight2">Empno</p>
-                <div class="content_box"><input id="no" class="highlight11" style="border: none;" placeholder="202410012"></div>
+                <div class="content_box"><input type="number" id="no" class="highlight11" style="border: none;" placeholder="202410012"></div>
               </div>
             </div>
             <div class="content_box21">
@@ -57,10 +54,6 @@
             </button>
           </div>
         </div>
-        <button class="btn1" id="sad">
-          <!-- TODO --> 
-          관리자로그인
-        </button>
       </div>
     </div>
 

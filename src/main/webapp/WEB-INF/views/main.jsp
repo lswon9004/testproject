@@ -5,148 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Management Portal</title>
-     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-        .header {
-            width: 100%;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .profile {
-            display: flex;
-            align-items: center;
-        }
-        .profile img {
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-        .profile-info {
-            text-align: left;
-        }
-        .profile-info .name {
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .profile-info .rank {
-            font-size: 14px;
-            color: #888;
-        }
-        .logout {
-            color: #000;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .content {
-            display: flex;
-            width: 100%;
-            max-width: 1200px;
-            margin-top: 20px;
-        }
-        .sidebar {
-            width: 200px;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-        .sidebar ul li {
-            margin-bottom: 10px;
-        }
-        .sidebar ul li a {
-            text-decoration: none;
-            color: #000;
-            font-size: 14px;
-        }
-        .main {
-            flex: 1;
-            padding: 20px;
-        }
-        .status-box {
-            display: flex;
-            justify-content: space-between;
-            background-color: #eaf6ff;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        .status-box table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .status-box table, .status-box th, .status-box td {
-            border: 1px solid #d6e9ff;
-        }
-        .status-box th, .status-box td {
-            padding: 10px;
-            text-align: center;
-        }
-        .calendar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .calendar .month {
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .calendar-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .calendar-table th, .calendar-table td {
-            border: 1px solid #d6e9ff;
-            padding: 10px;
-            text-align: center;
-        }
-        .calendar-table th {
-            background-color: #eaf6ff;
-        }
-        .notes {
-            display: flex;
-            justify-content: space-between;
-        }
-        .note {
-            width: 48%;
-            padding: 20px;
-            background-color: #ffecb3;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .note.green {
-            background-color: #d9f7be;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #fff;
-            border-top: 1px solid #eee;
-        }
-        footer a {
-            color: #888;
-            text-decoration: none;
-            font-size: 14px;
-            margin: 0 5px;
-        }
-    </style>
+        <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    
 </head>
 <body>
     <div class="container">
@@ -159,7 +19,7 @@
                     <div>Java Park님 환영합니다.</div>
                 </div>
             </div>
-            <a href="/logout" class="logout">로그아웃</a>
+            <a href="#" class="logout">로그아웃</a>
         </div>
         <div class="content">
             <div class="sidebar">
@@ -262,9 +122,13 @@
                     </tbody>
                 </table>
                 <div class="notes">
-                    <textarea class="note">12:20 부장님과 점심 14:50 미팅</textarea>
+                    <div class="note">
+                        12:20 부장님과 점심<br>
+                        14:50 미팅
                     </div>
-                    <textarea class="note green">Add notes</textarea>
+                    <div class="note green">
+                        Add notes
+                    </div>
                 </div>
             </div>
         </div>
