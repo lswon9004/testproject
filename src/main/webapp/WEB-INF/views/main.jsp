@@ -15,17 +15,17 @@
                 <img src="profile.jpg" alt="User Profile">
                 <div>
                     <p>이름: 김자바</p>
-                    <p>직책: 대리</p>
-                    <p>사번: 100100</p>
+                    <p>직책: ${user.position }</p>
+                    <p>사번: ${user.empno }</p>
                     <p>김자바 님 환영합니다.</p>
                 </div>
             </div>
             <h1>코멧 업무포털</h1>
             <div class="header-right">
-                <button>업무시작</button>
-                <button>업무종료</button>
-                <p>09:05</p>
-                <p>18:05</p>
+                <button id="start">업무시작</button>
+                <button id="end">업무종료</button>
+                <p id="startTime">00:00</p>
+                <p id="endTime">00:00</p>
                 <nav>
                     <a href="#">Home</a>
                     <a href="#">연봉계산기</a>
@@ -110,5 +110,23 @@
         </main>
     </div>
 </body>
-
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript"> 
+empno = ${user.empno};
+$('#start').click(function(){
+	deptno = ${user.deptno};
+	$.getJSON("/startTime",{'empno':empno,'deptno':deptno},function(data){
+		if (data){			
+			$('#startTime').text(data);						
+		 }else{
+			alert('이미 출근버튼을 누르셨습니다.')
+		} 
+	})
+})
+$('#end').click(function(){
+	$.getJSON('/endTime',{'empno':empno},function(data){
+		$('#endTime').text(data)
+	})
+})
+</script>
 </html>
