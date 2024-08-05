@@ -1,5 +1,7 @@
 package user.security.emp;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.google.gson.Gson;
+
+import jakarta.servlet.http.HttpServletRequest;
+import user.security.attendance.AttendanceService;
+
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -21,6 +27,8 @@ public class EmpController {
 
 	@Autowired
 	EmpService service;
+	@Autowired
+	AttendanceService aservice;
 	
 	@ModelAttribute("user")
 	public EmpDto getDto() {
@@ -63,8 +71,10 @@ public class EmpController {
 	}
 
 	@GetMapping("/main")
-	public String main(@ModelAttribute("user") EmpDto dto) {
+	public String main(@ModelAttribute("user") EmpDto dto, HttpServletRequest res) {
 		if(dto.empno != 0) {
+			Date startTime = aservice.startTime(dto.empno);
+			res.getSession().setAttribute("startTime", startTime);
 			return "/main";
 		}else {
 			return "/loginform";

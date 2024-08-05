@@ -1,6 +1,7 @@
 package user.security.attendance;
 
 import java.util.Date;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,4 +19,6 @@ public interface AttendanceDao {
 	int updateEndtime(int empno);
 	@Select("select check_out from Attendance_Management where empno = #{empno} and date = current_date() ")
 	Date endTime(int empno);
+	@Select("select empno from Attendance_Management where date = #{date}")
+	List<Integer> vacationList(Date date);
 }

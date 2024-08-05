@@ -3,6 +3,7 @@ package user.security.emp;
 import java.util.Date;
 
 import lombok.Data;
+import user.security.attendance.Attendance;
 @Data
 public class EmpDto {
 	int empno;
@@ -23,6 +24,6 @@ public class EmpDto {
 	Date birthday;
 	String memo;
 	int loginCount;
-	
+	Attendance att;
 	
 }
