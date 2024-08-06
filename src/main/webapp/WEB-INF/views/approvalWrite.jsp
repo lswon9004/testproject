@@ -30,6 +30,7 @@
         .form-container button {
             margin-right: 10px;
         }
+        
     </style>   
 </head>
 <body>
@@ -75,59 +76,21 @@
             <section class="main-content">
                 <div class="status-overview">
                     <div class="form-container">
-        <label for="approval_no">결제번호:</label>
-        <input type="text" id="approval_no" name="approval_no">
-        <label for="approval_title">결재 제목:</label>
-        <input type="text" id="approval_title" name="approval_title">
-        <label for="startDate">작성일:</label>
-        <input type="date" id="startDate" name="startDate">~
-        <input type="date" id="startDate" name="startDate">
-        <button onclick="search()">조회</button>
-        <select>
-        	<option>
-        		요청
-        	</option>
-        	<option>
-        		승인
-        	</option>
-        	<option>
-        		대기
-        	</option>
-        	<option>
-        		반려
-        	</option>
-        </select>
-            <button onclick="location.href='/approvalWrite'">등록</button>
-        
-    </div>
-    <table>
-    	<colgroup>
-			<col style="width:10%;" />
-			<col />
-			<col style="width:12%;" />
-			<col style="width:12%;" />
-			<col style="width:12%;" />
-			<col style="width:12%;" />
-		</colgroup>
-        <thead>
-            <tr>
-                <th>결재번호</th>
-                <th>결재제목</th>
-                <th>결재 내용</th>
-                <th>작성일</th>
-                <th>작성자</th>
-                <th>결재 상태</th>
-            </tr>
-            	<c:if test="${count == 0}">
-					<tr>
-						<td colspan="5" class="tac">게시판에 저장된 글이 없습니다.</td>
-					</tr>
-				</c:if>
-        </thead>
-        <tbody>
-            
-        </tbody>
-    </table>
+        				<h1 style="text-align: center;">결재 신청</h1>
+        				<form>
+        				<table>
+        					<tr>
+        						<td>문서번호</td>
+        						<td></td>
+        						<td>기안일자</td>
+        						<td><fmt:formatDate value="${startTime}" pattern="yyyy-MM-dd" /></td>
+        					</tr>
+        					<tr>
+        					</tr>
+        				</table>
+        				</form>
+   					 </div>
+   
                 </div>
             </section>
         </main>

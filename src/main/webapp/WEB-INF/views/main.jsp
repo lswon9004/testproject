@@ -58,7 +58,7 @@
                 <ul class="menu">
                     <li><a href="#">통합업무</a></li>
                     <li><a href="#">게시판</a></li>
-                    <li><a href="/approval">전자결재</a></li>
+                    <li><a href="/approval/${user.empno}">전자결재</a></li>
                     <li><a href="#">결재승인</a></li>
                     <li><a href="#">캘린더</a></li>
                     <li><a href="#">직원관리</a></li>
