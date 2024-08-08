@@ -71,10 +71,8 @@ public class EmpController {
 	}
 
 	@GetMapping("/main")
-	public String main(@ModelAttribute("user") EmpDto dto, HttpServletRequest res) {
+	public String main(@ModelAttribute("user") EmpDto dto) {
 		if(dto.empno != 0) {
-			Date startTime = aservice.startTime(dto.empno);
-			res.getSession().setAttribute("startTime", startTime);
 			return "/main";
 		}else {
 			return "/loginform";

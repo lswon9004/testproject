@@ -43,7 +43,7 @@
             <div class="header-right">
                 <button id="start">업무시작</button>
                 <button id="end">업무종료</button>
-                <p id="startTime"><c:if test="${startTime !=null}"><fmt:formatDate value="${startTime}" pattern="HH:mm" />/</c:if><c:if test="${startTime==null}">00:00/</c:if></p>
+                <p id="startTime"><c:if test="${startTime !=null}"><fmt:formatDate value="${startTime}" pattern="HH:mm" />/</c:if><c:if test="${startTime==null}">0d:00/</c:if></p>
                 <p id="endTime">00:00</p>
                 <nav>
                     <a href="#">Home</a>
@@ -58,7 +58,7 @@
                 <ul class="menu">
                     <li><a href="#">통합업무</a></li>
                     <li><a href="#">게시판</a></li>
-                    <li><a href="/approval">전자결재</a></li>
+                    <li><a href="/approval/${user.empno}">전자결재</a></li>
                     <li><a href="#">결재승인</a></li>
                     <li><a href="#">캘린더</a></li>
                     <li><a href="#">직원관리</a></li>
@@ -182,7 +182,7 @@ $('#start').click(function(){
 	deptno = ${user.deptno};
 	$.getJSON("/startTime",{'empno':empno,'deptno':deptno},function(data){
 		if (data){			
-			$('#startTime').text(data);						
+			$('#startTime').text(data+'/');						
 		 }else{
 			alert('이미 출근버튼을 누르셨습니다.')
 			alert(date)

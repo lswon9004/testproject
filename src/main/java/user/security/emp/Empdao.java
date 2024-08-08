@@ -1,5 +1,7 @@
 package user.security.emp;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -14,4 +16,6 @@ public interface Empdao {
 	int loginCount(int loginCount);
 	@Select("select loginCount from emp where empno = #{empno}")
 	int getLoginCount(int empno);
+	@Select("select empno from emp natural join position where authority = 3 or (deptno =#{deptno} and authority>1)")
+	List<Integer> getEmpnolist(int deptno); 
 }
