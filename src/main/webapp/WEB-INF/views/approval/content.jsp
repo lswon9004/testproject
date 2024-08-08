@@ -89,7 +89,6 @@
                 <div class="status-overview">
                     <div class="form-container">
         				<h1 style="text-align: center;">결재 신청</h1>
-        				<form method="post" action="/approval/insert" name="approvalDto">
         				<table>
         				<colgroup>
 			<col style="width:25%;" />
@@ -99,57 +98,45 @@
 		</colgroup>
         					<tr>
         						<td>문서번호</td>
-        						<td>${approval_no}</td>
+        						<td>${dto.approval_no}</td>
         						<td>기안일자</td>
-        						<td><fmt:formatDate value="${startTime}" pattern="yyyy-MM-dd" /></td>
+        						<td><fmt:formatDate value="${dto.created_date}" pattern="yyyy-MM-dd" /></td>
         					</tr>
         					<tr>
         					<td>서류 종류</td>
-        						<td style="margin: 0 0;padding: 0 0;"><select name="approval_type" style="width: 100%;">
-        							<option value="1">연차/휴가신청</option>
-        							<option value="2">출장신청</option>
-        							<option value="3">문서결재</option>
-        							<option value="4">비품신청</option>
-        						</select></td>
+        						<td style="margin: 0 0;padding: 0 0;"><c:choose>
+									<c:when test="${dto.approval_type ==1 }">연차/휴가신청</c:when>
+									<c:when test="${dto.approval_type ==2 }">출장신청</c:when>
+									<c:when test="${dto.approval_type ==3 }">문서결재</c:when>
+									<c:when test="${dto.approval_type ==4 }">비품신청</c:when>
+								</c:choose></td>
         						<td>사원 번호</td>
-        						<td>${user.empno }</td>
+        						<td>${dto.empno }</td>
         					</tr>
         					<tr>
         						<td>
         							결재 제목
         						</td>
-        						<td style="margin: 0 0;padding: 0 0;"> 
-        							<input type="text" style="width: 100%;" placeholder="제목을 입력하세요" name="approval_title">
+        						<td > 
+        							${dto.approval_title}
         						</td>
         						<td>
         							담당자
         						</td>
-        						<td style="margin: 0 0;padding: 0 0;">
-        							<select name="approver1_empno" style="width: 100%;">
-        								<c:forEach items="${elist}" var="deptno">
-        									<option value="${deptno }">${deptno }</option>
-        								</c:forEach>
-        							</select>
+        						<td>
+        							${dto.approver1_empno }
         						</td>
         					</tr>
         				</table>
-        				<textarea id="editor" style="width: 100%; height: 200px;" name="approval_content"></textarea>
-        				<input type="submit" value="등록">
-        				</form>
+        				<textarea style="width: 100%; height: 200px;" readonly="readonly">${dto.approval_content }</textarea>
+        				<button onclick="window.location.href='/approval/update/${dto.approval_no}';">수정</button><button>삭제</button>
+        				
    					 </div>
    
                 </div>
             </section>
         </main>
     </div>
-    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
-    <script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>
     
-    <script>
-    ClassicEditor.create( document.querySelector( '#editor' ), {
-        language: "ko"
-      } );
-    </script>
 </body>
 </html>

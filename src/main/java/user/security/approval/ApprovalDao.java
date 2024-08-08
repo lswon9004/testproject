@@ -3,9 +3,11 @@ package user.security.approval;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface ApprovalDao {
@@ -36,6 +38,13 @@ public interface ApprovalDao {
 			 					  @Param("startDate")Date startDate,
 			 					  @Param("endDate")Date endDate,
 			 					  @Param("empno")int empno);
-	@Select("select max(approval_no)+1 form approval where empno = #{empno}")
+	@Select("select ifnull((max(approval_no)+1),1) from approval where empno = #{empno}")
 	int getApproval_no(int empno);
+	@Insert("insert into approval(empno,deptno,approval_title,approval_content,approver1_empno,approval_type) "
+			+ "values(#{empno},#{deptno},#{approval_title},#{approval_content},#{approver1_empno},#{approval_type})")
+	int insertApproval(ApprovalDto dto);
+	@Select("select * from approval where approval_no = #{approval_no}")
+	ApprovalDto oneApproval(int approval_no);
+	@Update("update approval set approval_content = #{approval_content}, approval_type = #{approval_type} where approval_no = #{approval_no}")
+	int updateApproval(@Param("approval_content")String approval_content,@Param("approval_no")int approval_no,@Param("approval_type")int approval_type );
 }

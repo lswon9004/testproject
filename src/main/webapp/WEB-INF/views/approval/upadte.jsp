@@ -89,7 +89,7 @@
                 <div class="status-overview">
                     <div class="form-container">
         				<h1 style="text-align: center;">결재 신청</h1>
-        				<form method="post" action="/approval/insert" name="approvalDto">
+        				<form method="post" action="/approval/update/${dto.approval_no}" name="approvalDto">
         				<table>
         				<colgroup>
 			<col style="width:25%;" />
@@ -99,9 +99,9 @@
 		</colgroup>
         					<tr>
         						<td>문서번호</td>
-        						<td>${approval_no}</td>
+        						<td>${dto.approval_no}</td>
         						<td>기안일자</td>
-        						<td><fmt:formatDate value="${startTime}" pattern="yyyy-MM-dd" /></td>
+        						<td><fmt:formatDate value="${dto.created_date}" pattern="yyyy-MM-dd" /></td>
         					</tr>
         					<tr>
         					<td>서류 종류</td>
@@ -112,28 +112,24 @@
         							<option value="4">비품신청</option>
         						</select></td>
         						<td>사원 번호</td>
-        						<td>${user.empno }</td>
+        						<td>${dto.empno }</td>
         					</tr>
         					<tr>
         						<td>
         							결재 제목
         						</td>
-        						<td style="margin: 0 0;padding: 0 0;"> 
-        							<input type="text" style="width: 100%;" placeholder="제목을 입력하세요" name="approval_title">
+        						<td > 
+        							${dto.approval_title}
         						</td>
         						<td>
         							담당자
         						</td>
-        						<td style="margin: 0 0;padding: 0 0;">
-        							<select name="approver1_empno" style="width: 100%;">
-        								<c:forEach items="${elist}" var="deptno">
-        									<option value="${deptno }">${deptno }</option>
-        								</c:forEach>
-        							</select>
+        						<td>
+        							${dto.approver1_empno }
         						</td>
         					</tr>
         				</table>
-        				<textarea id="editor" style="width: 100%; height: 200px;" name="approval_content"></textarea>
+        				<textarea id="editor" style="width: 100%; height: 200px;" name="approval_content">${dto.approval_content }</textarea>
         				<input type="submit" value="등록">
         				</form>
    					 </div>
