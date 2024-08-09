@@ -128,7 +128,9 @@
         						</td>
         					</tr>
         				</table>
-        				<textarea style="width: 100%; height: 200px;" readonly="readonly">${dto.approval_content }</textarea>
+        				<textarea style="width: 100%; height: 100px;" readonly="readonly">${dto.approval_content }</textarea>
+          				결재 의견<br>
+          				<textarea style="width: 100%; height: 100px;" readonly="readonly">${dto.approval_comm }</textarea>						
         				<button onclick="window.location.href='/approval/update/${dto.approval_no}';">수정</button><button>삭제</button>
         				
    					 </div>

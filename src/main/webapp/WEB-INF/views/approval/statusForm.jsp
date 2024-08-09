@@ -129,7 +129,7 @@
         					</tr>
         				</table>
         				<textarea style="width: 100%; height: 200px;" readonly="readonly">${dto.approval_content }</textarea>
-        				<form method="post">
+        				<form method="post" action="/approval/statusForm/${dto.approval_no}">
         				<table>
         				<colgroup>
 			<col style="width:25%;" />

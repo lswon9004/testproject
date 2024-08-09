@@ -138,5 +138,6 @@ public interface ApprovalDao {
 			 		@Param("approval_status1")String approval_status1,
 			 		@Param("approver1_empno")int approver1_empno,
 			 		@Param("start")int start);
-	
+	@Update("update approval set approval_status1 = #{approval_status1}, approval_comm =#{approval_comm} where approval_no = #{approval_no}")
+	int updateStatus(@Param("approval_status1")String approval_status1, @Param("approval_comm")String approval_comm,@Param("approval_no")int approval_no);
 }

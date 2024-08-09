@@ -171,7 +171,9 @@ public class ApprovalController {
 		return "/approval/statusForm";
 	}
 	@PostMapping("/approval/statusForm/{no}")
-	public String updateStatus() {
+	public String updateStatus(@PathVariable("no")int no,@RequestParam("approval_status1")String approval_status1,
+							   @RequestParam("approval_comm")String approval_comm) {
+		
 		return "redirect:/approval/status";
 	}
 }

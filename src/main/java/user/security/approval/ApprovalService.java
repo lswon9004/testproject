@@ -66,4 +66,7 @@ public class ApprovalService {
 		}
 		return dao.statusSearchList(approval_title, startDate, endDate, empno, approval_status1, approver1_empno, start);
 	}
+	public int updateStatus(String approval_status1, String approval_comm,int no) {
+		return dao.updateStatus(approval_status1, approval_comm, no);
+	}
 }
