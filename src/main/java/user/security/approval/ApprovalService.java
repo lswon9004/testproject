@@ -3,6 +3,7 @@ package user.security.approval;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,5 +51,19 @@ public class ApprovalService {
 	}
 	public List<ApprovalDto> aStatus(int empno,int start){
 		return dao.approvalStatus(empno,start);
+	}
+	public int statusSearchCount(String approval_title,Date startDate,Date endDate,int empno,
+			 		String approval_status1,int approver1_empno) {
+		if(approval_status1.equals("요청")) {
+			approval_status1 = "";
+		}
+		return dao.statusSearchCount(approval_title, startDate, endDate, empno, approval_status1, approver1_empno);
+	}
+	public List<ApprovalDto> statusSearchList(String approval_title,Date startDate,Date endDate,int empno,
+			 		String approval_status1,int approver1_empno, int start){
+		if(approval_status1.equals("요청")) {
+			approval_status1 = "";
+		}
+		return dao.statusSearchList(approval_title, startDate, endDate, empno, approval_status1, approver1_empno, start);
 	}
 }

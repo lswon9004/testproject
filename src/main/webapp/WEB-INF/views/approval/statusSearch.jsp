@@ -56,7 +56,7 @@
                 <p id="endTime">00:00</p>
                 <nav>
                     <a href="/main">Home</a>
-                    <a href="/cleander">연봉계산기</a>
+                    <a href="#">연봉계산기</a>
                     <a href="#">개인정보수정</a>
                     <a href="/logout">로그아웃</a>
                 </nav>
@@ -80,9 +80,9 @@
                 <div class="status-overview">
                     <div class="form-container">
         <form action="/approval/status/search">
+        <label for="empno">결제번호:</label>
         <input type="hidden" name="approval_empno" value="${user.empno }">
-        <label for="empno">사원번호:</label>
-        <input type="text" id="empno" name="empno">
+        <input type="number" id="empno" name="empno" value="">
         <label for="approval_title">결재 제목:</label>
         <input type="text" id="approval_title" name="approval_title">
         <label for="startDate">작성일:</label>
@@ -95,7 +95,7 @@
         	</option>
         	<option>
         		승인
-        	</option>
+        	</option >
         	<option>
         		대기
         	</option>
@@ -104,7 +104,6 @@
         	</option>
         </select>
         </form>
-           
         
     </div>
     <table>
@@ -130,7 +129,7 @@
         <tbody>
             <c:if test="${count == 0}">
 					<tr>
-						<td colspan="6" class="tac">저장된 글이 없습니다.</td>
+						<td colspan="6" class="tac">게시판에 저장된 글이 없습니다.</td>
 					</tr>
 				</c:if>
 				<c:if test="${count > 0}">
@@ -156,13 +155,13 @@
                 <div class="paging">
 		<div id="page">
 				<c:if test="${begin > pageNum }">
-					<a href="/approval/${user.empno}?p=${begin-1 }" class="page prv">&lt;</a>
+					<a href="/approval/search?p=${begin-1 }&approval_no=${approval_no}&approval_title=${approval_title}&approval_status1=${approval_status1}&startDate=${startDate}&endDate=${endDate}" class="page prv">&lt;</a>
 				</c:if>
 				<c:forEach begin="${begin }" end="${end}" var="i">
-					<a href="/approval/${user.empno}?p=${i}">${i}</a>
+					<a href="/approval/search?p=${i}&approval_no=${approval_no}&approval_title=${approval_title}&approval_status1=${approval_status1}&startDate=${startDate}&endDate=${endDate}">${i}</a>
 				</c:forEach>
 				<c:if test="${end < totalPages }">
-					<a href="/approval/${user.empno}?p=${end+1}" class="page next">&gt;</a>
+					<a href="/approval/search?p=${end+1}&approval_no=${approval_no}&approval_title=${approval_title}&approval_status1=${approval_status1}&startDate=${startDate}&endDate=${endDate}" class="page next">&gt;</a>
 				</c:if>
 			</div>
 		</div>

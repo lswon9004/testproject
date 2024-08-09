@@ -16,4 +16,5 @@ public class ApprovalDto {
 	int approver1_empno;
 	String approval_status1;
 	String final_approval;
+	String approval_comm;
 }

@@ -85,4 +85,58 @@ public interface ApprovalDao {
 	List<ApprovalDto> approvalStatus(@Param("empno")int empno,@Param("start")int start);
 	@Select("select count(*) from approval where approver1_empno = #{empno}")
 	int aStatusCount(int empno);
+	@Select({
+	    "<script>",
+	    "select count(*) from Approval",
+	    "<where>",
+	        "<if test=\"empno != 0\">",
+	            "empno = #{empno}",
+	        "</if>",
+	        "<if test=\"approval_title != null and approval_title != ''\">",
+	            "and approval_title like #{approval_title}",
+	        "</if>",
+	        "<if test=\"startDate != null and endDate != null \">",
+	            "and created_date between #{startDate} and #{endDate}",
+	        "</if>",
+	        "<if test=\"approval_status1 != null and approval_status1 != ''\">",
+            	"and approval_status1 = #{approval_status1}",
+            "</if>",
+	        "and approver1_empno = #{approver1_empno}",
+	    "</where>",
+	    "</script>"
+	})
+	int statusSearchCount(@Param("approval_title")String approval_title,
+			 		@Param("startDate")Date startDate,
+			 		@Param("endDate")Date endDate,
+			 		@Param("empno")int empno,
+			 		@Param("approval_status1")String approval_status1,
+			 		@Param("approver1_empno")int approver1_empno);
+	@Select({
+	    "<script>",
+	    "select * from Approval",
+	    "<where>",
+	        "<if test=\"empno != 0\">",
+	            "empno = #{empno}",
+	        "</if>",
+	        "<if test=\"approval_title != null and approval_title != ''\">",
+	            "and approval_title like #{approval_title}",
+	        "</if>",
+	        "<if test=\"startDate != null and endDate != null \">",
+	            "and created_date between #{startDate} and #{endDate}",
+	        "</if>",
+	        "<if test=\"approval_status1 != null and approval_status1 != ''\">",
+            	"and approval_status1 = #{approval_status1}",
+            "</if>",
+	        "and approver1_empno = #{approver1_empno} order by created_date desc limit #{start} , 10",
+	    "</where>",
+	    "</script>"
+	})
+	List<ApprovalDto> statusSearchList(@Param("approval_title")String approval_title,
+			 		@Param("startDate")Date startDate,
+			 		@Param("endDate")Date endDate,
+			 		@Param("empno")int empno,
+			 		@Param("approval_status1")String approval_status1,
+			 		@Param("approver1_empno")int approver1_empno,
+			 		@Param("start")int start);
+	
 }

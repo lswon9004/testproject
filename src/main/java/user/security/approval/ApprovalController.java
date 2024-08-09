@@ -131,4 +131,47 @@ public class ApprovalController {
 		}
 		m.addAttribute("count", count);
 	}
+	@GetMapping("/approval/status/search")
+	public String approvalStatusSearch(@RequestParam(name = "approval_title")String approval_title,
+			 @RequestParam(name = "approval_status1")String approval_status1,
+			 @DateTimeFormat(pattern = "yyyy-MM-dd")@RequestParam(name = "startDate",required = false)Date startDate,
+			 @DateTimeFormat(pattern = "yyyy-MM-dd")@RequestParam(name = "endDate",required = false)Date endDate,
+			 @RequestParam(name="p", defaultValue = "1") int page,@RequestParam("empno")String empno ,
+			 @RequestParam("approval_empno")int approval_empno,Model m) {
+		int no = 0;
+		approval_title = "%"+approval_title+"%";
+		if(!empno.equals("")) {
+			no = Integer.parseInt(empno);
+		}
+		int count = aService.statusSearchCount(approval_title, startDate, endDate, no, approval_status1, approval_empno);
+		if(count>0) {
+			int perPage = 10; // 한 페이지에 보일 글의 갯수
+			int startRow = (page - 1) * perPage;//인덱스 번호
+			List<ApprovalDto> alist = aService.statusSearchList(approval_title, startDate, endDate, no, approval_status1, approval_empno, startRow);
+			m.addAttribute("alist", alist);
+			int pageNum = 5;
+			int totalPages = count / perPage + (count % perPage > 0 ? 1 : 0); //전체 페이지 수	
+			int begin = (page - 1) / pageNum * pageNum + 1;
+			int end = begin + pageNum -1;
+			if(end > totalPages) {
+				end = totalPages;
+			}
+			m.addAttribute("begin", begin);
+			m.addAttribute("end", end);
+			m.addAttribute("pageNum", pageNum);
+			m.addAttribute("totalPages", totalPages);
+		}
+		m.addAttribute("count", count);
+		return "/approval/statusSearch";
+	}
+	@GetMapping("/approval/statusForm/{no}")
+	public String statusForm(@PathVariable("no")int no, Model m) {
+		ApprovalDto dto = aService.oneApproval(no);
+		m.addAttribute("dto", dto);
+		return "/approval/statusForm";
+	}
+	@PostMapping("/approval/statusForm/{no}")
+	public String updateStatus() {
+		return "redirect:/approval/status";
+	}
 }
