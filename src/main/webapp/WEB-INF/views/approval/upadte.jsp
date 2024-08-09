@@ -64,7 +64,7 @@
                 <p id="startTime"><c:if test="${startTime !=null}"><fmt:formatDate value="${startTime}" pattern="HH:mm" />/</c:if><c:if test="${startTime==null}">00:00/</c:if></p>
                 <p id="endTime">00:00</p>
                 <nav>
-                    <a href="#">Home</a>
+                    <a href="/main">Home</a>
                     <a href="/cleander">연봉계산기</a>
                     <a href="#">개인정보수정</a>
                     <a href="/logout">로그아웃</a>
@@ -77,7 +77,7 @@
                     <li><a href="#">통합업무</a></li>
                     <li><a href="#">게시판</a></li>
                     <li><a href="/approval">전자결재</a></li>
-                    <li><a href="#">결재승인</a></li>
+                    <li><a href="/approval/status">결재승인</a></li>
                     <li><a href="#">캘린더</a></li>
                     <li><a href="#">직원관리</a></li>
                     <li><a href="#">관찰관리</a></li>

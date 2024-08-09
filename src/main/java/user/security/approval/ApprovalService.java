@@ -1,5 +1,6 @@
 package user.security.approval;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,8 @@ public class ApprovalService {
 	public int Acount(int empno) {
 		return dao.Acount(empno);
 	}
-	public List<ApprovalDto> alist(int empno){
-		return dao.alist(empno);
+	public List<ApprovalDto> alist(int empno,int start){
+		return dao.alist(empno,start);
 	}
 	public int getApproval_no(int empno) {
 		return dao.getApproval_no(empno);
@@ -27,5 +28,27 @@ public class ApprovalService {
 	}
 	public int updateApproval(String approval_content,int approval_no,int approval_type) {
 		return dao.updateApproval(approval_content, approval_no, approval_type);
+	}
+	public int searchCount(int no, String approval_title, 
+						   String approval_status1, Date startDate,
+						   Date endDate, int empno) {
+		if(approval_status1.equals("요청")) {
+			approval_status1 = "";
+		}
+		return dao.searchCount(no, approval_title, startDate, endDate, empno,approval_status1);
+	}
+	public List<ApprovalDto> searchApproval(int no, String approval_title, 
+			   String approval_status1, Date startDate,
+			   Date endDate, int empno, int start){
+		if(approval_status1.equals("요청")) {
+			approval_status1 = "";
+		}
+		return dao.searchList(no, approval_title, startDate, endDate, empno, approval_status1, start);
+	}
+	public int aStatusCount(int empno) {
+		return dao.aStatusCount(empno);
+	}
+	public List<ApprovalDto> aStatus(int empno,int start){
+		return dao.approvalStatus(empno,start);
 	}
 }

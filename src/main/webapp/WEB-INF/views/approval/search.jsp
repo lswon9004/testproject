@@ -55,8 +55,8 @@
                 <p id="startTime"><c:if test="${startTime !=null}"><fmt:formatDate value="${startTime}" pattern="HH:mm" />/</c:if><c:if test="${startTime==null}">00:00/</c:if></p>
                 <p id="endTime">00:00</p>
                 <nav>
-                    <a href="#">Home</a>
-                    <a href="/cleander">연봉계산기</a>
+                    <a href="/main">Home</a>
+                    <a href="#">연봉계산기</a>
                     <a href="#">개인정보수정</a>
                     <a href="/logout">로그아웃</a>
                 </nav>
@@ -94,7 +94,7 @@
         	</option>
         	<option>
         		승인
-        	</option>
+        	</option >
         	<option>
         		대기
         	</option>
@@ -155,13 +155,13 @@
                 <div class="paging">
 		<div id="page">
 				<c:if test="${begin > pageNum }">
-					<a href="/approval/${user.empno}?p=${begin-1 }" class="page prv">&lt;</a>
+					<a href="/approval/search?p=${begin-1 }&approval_no=${approval_no}&approval_title=${approval_title}&approval_status1=${approval_status1}&startDate=${startDate}&endDate=${endDate}" class="page prv">&lt;</a>
 				</c:if>
 				<c:forEach begin="${begin }" end="${end}" var="i">
-					<a href="/approval/${user.empno}?p=${i}">${i}</a>
+					<a href="/approval/search?p=${i}&approval_no=${approval_no}&approval_title=${approval_title}&approval_status1=${approval_status1}&startDate=${startDate}&endDate=${endDate}">${i}</a>
 				</c:forEach>
 				<c:if test="${end < totalPages }">
-					<a href="/approval/${user.empno}?p=${end+1}" class="page next">&gt;</a>
+					<a href="/approval/search?p=${end+1}&approval_no=${approval_no}&approval_title=${approval_title}&approval_status1=${approval_status1}&startDate=${startDate}&endDate=${endDate}" class="page next">&gt;</a>
 				</c:if>
 			</div>
 		</div>

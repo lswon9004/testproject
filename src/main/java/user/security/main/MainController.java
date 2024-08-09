@@ -25,7 +25,7 @@ public class MainController {
 		if(count>0) {
 			int perPage = 10; // 한 페이지에 보일 글의 갯수
 			int startRow = (page - 1) * perPage;//인덱스 번호
-			List<ApprovalDto> alist = aservice.alist(empno);
+			List<ApprovalDto> alist = aservice.alist(empno,startRow);
 			m.addAttribute("alist", alist);
 			int pageNum = 5;
 			int totalPages = count / perPage + (count % perPage > 0 ? 1 : 0); //전체 페이지 수	
